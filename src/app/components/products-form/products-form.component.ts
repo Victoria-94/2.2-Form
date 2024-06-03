@@ -33,26 +33,26 @@ import { Validators as MyValidators } from '@angular/forms';
     NzInputNumberComponent
   ],
   templateUrl: './products-form.component.html',
-  styleUrl: './products-form.component.css'
+  styleUrl: './products-form.component.css',
 })
 export class ProductsFormComponent {
-    validateForm: FormGroup<{
+    validateForm1: FormGroup<{
     productName: FormControl<string>;
-    descrition: FormControl<string>;
-    stock: FormControl<string>;
-    unitPrice: FormControl<string>;
+    description: FormControl<string>;
+    quantityInStock: FormControl<number>;
+    unitPrice: FormControl<number>;
   }>;
 
-  submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-        this.apiService.create(this.validateForm.value).subscribe(() => {
-          this.createNotification('success', `${this.validateForm.value.productName} ${this.validateForm.value.productName}` ,"Employee has been created successfully!")
-      this.validateForm.reset();
+  submitForm1(): void {
+    if (this.validateForm1.valid) {
+      console.log('submit', this.validateForm1.value);
+        this.apiService.createProducts(this.validateForm1.value).subscribe(() => {
+          this.createNotification('success', `${this.validateForm1.value.productName} ${this.validateForm1.value.description}`,"producto creado exitosamente")
+      this.validateForm1.reset();
         }
       );
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+      Object.values(this.validateForm1.controls).forEach(control => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -74,11 +74,11 @@ export class ProductsFormComponent {
     private notification: NzNotificationService
   ) {
     const { required } = MyValidators;
-    this.validateForm = this.fb.group({
+    this.validateForm1 = this.fb.group({
       productName: ['', [required]],
-      descrition: ['', [required]],
-      stock: ['', [required]],
-      unitPrice: ['', [required]],
+      description: ['', [required]],
+      quantityInStock: [0, [required]],
+      unitPrice: [0, [required]]
     });
   }
 }

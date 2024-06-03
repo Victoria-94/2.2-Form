@@ -1,29 +1,29 @@
 <h1>products-form</h1>
 
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="validateForm1" (ngSubmit)="submitForm1()">
     <nz-form-item>
       <nz-form-label [nzSpan]="7" nzRequired>Product Name</nz-form-label>
       <nz-form-control [nzSpan]="12">
-        <input nz-input formControlName="firstName" placeholder="Juan" />
+        <input nz-input formControlName="productName" placeholder="chocolateenbarra" />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSpan]="7" nzRequired>Description</nz-form-label>
       <nz-form-control [nzSpan]="12">
-        <input nz-input formControlName="lastName" placeholder="Perez" />
+        <input nz-input formControlName="description" placeholder="tipopaccari" />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Stock</nz-form-label>
+      <nz-form-label [nzSpan]="7" nzRequired>quantityStock</nz-form-label>
       <nz-form-control [nzSpan]="12">
-        <input nz-input formControlName="role" placeholder="Technical" />
+        <nz-input-number  formControlName="quantityInStock" placeholder="0" ></nz-input-number>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label [nzSpan]="7" nzRequired>UnitPrice</nz-form-label>
       <nz-form-control [nzSpan]="12">
-  <nz-input-number formControlName="UnitPrice" [nzMin]="0" [nzMax]="100000" [nzStep]="100"></nz-input-number>
+  <nz-input-number formControlName="unitPrice" [nzMin]="0" [nzMax]="100000" [nzStep]="100"></nz-input-number>
       </nz-form-control>
     </nz-form-item>
 
